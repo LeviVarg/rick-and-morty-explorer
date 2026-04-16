@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+Genesys_Intern_Assignment_Frontend.md
+Genesys_Intern_Assignment_Frontend.pdf
+implementation_plan.md
