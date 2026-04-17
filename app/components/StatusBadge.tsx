@@ -1,5 +1,3 @@
-"use client"
-
 interface StatusBadgeProps {
   status: string
 }
@@ -8,11 +6,11 @@ export default function StatusBadge({ status }: StatusBadgeProps) {
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
       case "alive":
-        return { bg: "bg-green-100 dark:bg-green-900", text: "text-green-800 dark:text-green-200", dot: "bg-green-500" }
+        return { bg: "bg-rm-rick-green/20", text: "text-rm-jerry-green dark:text-rm-rick-green", dot: "bg-rm-rick-green" }
       case "dead":
-        return { bg: "bg-red-100 dark:bg-red-900", text: "text-red-800 dark:text-red-200", dot: "bg-red-500" }
+        return { bg: "bg-rm-beth-red/20", text: "text-rm-beth-red", dot: "bg-rm-beth-red" }
       default:
-        return { bg: "bg-gray-100 dark:bg-gray-800", text: "text-gray-800 dark:text-gray-200", dot: "bg-gray-500" }
+        return { bg: "bg-rm-rick-brown/20", text: "text-rm-rick-brown", dot: "bg-rm-rick-brown" }
     }
   }
 

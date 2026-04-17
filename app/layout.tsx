@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rick & Morty explorer",
-  description: "Browse Rick & Morty chacacters",
+  title: "Rick & Morty Explorer",
+  description: "Browse Rick & Morty characters",
 };
 
 export default function RootLayout({
@@ -27,7 +28,17 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <header className="sticky top-0 z-10 bg-rm-morty-blue text-white shadow-lg">
+          <nav className="max-w-6xl mx-auto px-4 py-4 flex items-center gap-3">
+            <span className="text-rm-rick-green text-2xl font-bold">&#x2727;</span>
+            <Link href="/" className="text-xl font-bold tracking-tight hover:text-rm-rick-green transition-colors">
+              Rick & Morty Explorer
+            </Link>
+          </nav>
+        </header>
+        <main className="flex-1">{children}</main>
+      </body>
     </html>
   );
 }

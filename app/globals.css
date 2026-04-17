@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f0fdf8;
+  --foreground: #24325F;
 }
 
 @theme inline {
@@ -10,12 +10,26 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Rick & Morty "schwifty" palette */
+  --color-rm-morty-yellow: #FAFD7C;
+  --color-rm-morty-brown: #82491E;
+  --color-rm-morty-blue: #24325F;
+  --color-rm-rick-blue: #B7E4F9;
+  --color-rm-beth-red: #FB6467;
+  --color-rm-jerry-green: #526E2D;
+  --color-rm-summer-pink: #E762D7;
+  --color-rm-summer-orange: #E89242;
+  --color-rm-beth-yellow: #FAE48B;
+  --color-rm-rick-green: #A6EEE6;
+  --color-rm-rick-brown: #917C5D;
+  --color-rm-meeseeks-blue: #69C8EC;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #121a2e;
+    --foreground: #e8f0fe;
   }
 }
 

@@ -14,10 +14,10 @@ interface CharacterTableProps {
   currentPage: number
 }
 
-export default function CharacterTable({ data, currentPage }: CharacterTableProps) {
+export default function CharacterTable({ data: characters, currentPage }: CharacterTableProps) {
   const [search, setSearch] = useState("")
 
-  const filteredCharacters = data.results.filter(character =>
+  const filteredCharacters = characters.results.filter(character =>
     character.name.toLowerCase().includes(search.toLowerCase())
   )
 
@@ -30,31 +30,33 @@ export default function CharacterTable({ data, currentPage }: CharacterTableProp
           placeholder="Search characters by name..."
           value={search}
           onChange={e => setSearch(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white"
+          className="w-full px-4 py-2 border-2 border-rm-meeseeks-blue/40 rounded-lg bg-white dark:bg-rm-morty-blue/30 text-rm-morty-blue dark:text-rm-rick-blue placeholder-rm-rick-brown/60 focus:outline-none focus:ring-2 focus:ring-rm-rick-green focus:border-rm-rick-green transition-colors"
         />
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto shadow-md rounded-lg mb-8">
+      <div className="overflow-x-auto shadow-md rounded-lg mb-8 border border-rm-meeseeks-blue/20">
         {filteredCharacters.length === 0 ? (
-          <div className="p-8 text-center text-gray-500 dark:text-gray-400">
+          <div className="p-8 text-center text-rm-rick-brown">
             {search ? "No characters found matching your search." : "No characters available."}
           </div>
         ) : (
-          <table className="w-full bg-white dark:bg-gray-900">
+          <table className="w-full bg-white dark:bg-rm-morty-blue/20">
             <thead>
-              <tr className="bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
-                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Avatar</th>
-                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Name</th>
-                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Species</th>
-                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Status</th>
+              <tr className="bg-rm-morty-blue dark:bg-rm-morty-blue/80 border-b border-rm-meeseeks-blue/30">
+                <th className="px-6 py-3 text-left text-sm font-semibold text-rm-rick-green">Avatar</th>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-rm-rick-green">Name</th>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-rm-rick-green">Species</th>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-rm-rick-green">Status</th>
               </tr>
             </thead>
             <tbody>
               {filteredCharacters.map((character, index) => (
                 <tr
                   key={character.id}
-                  className={`border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors ${index % 2 === 0 ? "bg-white dark:bg-gray-900" : "bg-gray-50 dark:bg-gray-800"
+                  className={`border-b border-rm-meeseeks-blue/10 hover:bg-rm-rick-green/10 transition-colors ${index % 2 === 0
+                      ? "bg-white dark:bg-rm-morty-blue/10"
+                      : "bg-rm-rick-blue/10 dark:bg-rm-morty-blue/20"
                     }`}
                 >
                   <td className="px-6 py-4">
@@ -63,18 +65,18 @@ export default function CharacterTable({ data, currentPage }: CharacterTableProp
                       alt={character.name}
                       width={48}
                       height={48}
-                      className="rounded-full"
+                      className="rounded-full ring-2 ring-rm-rick-green/50"
                     />
                   </td>
                   <td className="px-6 py-4">
                     <Link
                       href={`/character/${character.id}`}
-                      className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                      className="text-rm-meeseeks-blue hover:text-rm-rick-green font-medium hover:underline transition-colors"
                     >
                       {character.name}
                     </Link>
                   </td>
-                  <td className="px-6 py-4 text-gray-700 dark:text-gray-300">{character.species}</td>
+                  <td className="px-6 py-4 text-rm-morty-blue dark:text-rm-rick-blue/80">{character.species}</td>
                   <td className="px-6 py-4">
                     <StatusBadge status={character.status} />
                   </td>
@@ -89,28 +91,28 @@ export default function CharacterTable({ data, currentPage }: CharacterTableProp
       <div className="flex items-center justify-between">
         <Link
           href={`/?page=${currentPage - 1}`}
-          className={`px-4 py-2 rounded-lg font-medium transition-colors ${!data.info.prev
-              ? "bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 cursor-not-allowed"
-              : "bg-blue-600 dark:bg-blue-700 text-white hover:bg-blue-700 dark:hover:bg-blue-800"
+          className={`px-4 py-2 rounded-lg font-medium transition-colors ${!characters.info.prev
+            ? "bg-rm-rick-brown/30 text-rm-rick-brown/50 cursor-not-allowed"
+            : "bg-rm-meeseeks-blue text-white hover:bg-rm-morty-blue"
             }`}
-          aria-disabled={!data.info.prev}
-          onClick={e => !data.info.prev && e.preventDefault()}
+          aria-disabled={!characters.info.prev}
+          onClick={e => !characters.info.prev && e.preventDefault()}
         >
           Previous
         </Link>
 
-        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-          Page {currentPage} of {data.info.pages}
+        <span className="text-sm font-medium text-rm-morty-blue dark:text-rm-beth-yellow">
+          Page {currentPage} of {characters.info.pages}
         </span>
 
         <Link
           href={`/?page=${currentPage + 1}`}
-          className={`px-4 py-2 rounded-lg font-medium transition-colors ${!data.info.next
-              ? "bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 cursor-not-allowed"
-              : "bg-blue-600 dark:bg-blue-700 text-white hover:bg-blue-700 dark:hover:bg-blue-800"
+          className={`px-4 py-2 rounded-lg font-medium transition-colors ${!characters.info.next
+            ? "bg-rm-rick-brown/30 text-rm-rick-brown/50 cursor-not-allowed"
+            : "bg-rm-meeseeks-blue text-white hover:bg-rm-morty-blue"
             }`}
-          aria-disabled={!data.info.next}
-          onClick={e => !data.info.next && e.preventDefault()}
+          aria-disabled={!characters.info.next}
+          onClick={e => !characters.info.next && e.preventDefault()}
         >
           Next
         </Link>
