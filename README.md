@@ -17,7 +17,7 @@ pnpm dev
 # or
 bun dev
 
-or build the project
+#or build the project
 
 npm run build
 
