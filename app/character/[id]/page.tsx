@@ -16,7 +16,7 @@ export default async function CharacterProfile({ params }: { params: Promise<{ i
         &larr; Back to characters
       </Link>
 
-      <div className="bg-white dark:bg-rm-morty-blue/20 rounded-xl shadow-md overflow-hidden border border-rm-meeseeks-blue/20 sm:flex">
+      <div className="bg-rm-rick-blue/15 dark:bg-rm-morty-blue/20 rounded-xl shadow-md overflow-hidden border border-rm-meeseeks-blue/20 sm:flex">
         <div className="sm:w-72 sm:shrink-0">
           <Image
             src={character.image}
