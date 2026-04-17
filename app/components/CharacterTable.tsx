@@ -30,7 +30,7 @@ export default function CharacterTable({ data: characters, currentPage }: Charac
           placeholder="Search characters by name..."
           value={search}
           onChange={e => setSearch(e.target.value)}
-          className="w-full px-4 py-2 border-2 border-rm-meeseeks-blue/40 rounded-lg bg-white dark:bg-rm-morty-blue/30 text-rm-morty-blue dark:text-rm-rick-blue placeholder-rm-rick-brown/60 focus:outline-none focus:ring-2 focus:ring-rm-rick-green focus:border-rm-rick-green transition-colors"
+          className="w-full px-4 py-2 border-2 border-rm-meeseeks-blue/40 rounded-lg bg-rm-rick-blue/15 dark:bg-rm-morty-blue/30 text-rm-morty-blue dark:text-rm-rick-blue placeholder-rm-rick-brown/60 focus:outline-none focus:ring-2 focus:ring-rm-rick-green focus:border-rm-rick-green transition-colors"
         />
       </div>
 
@@ -41,7 +41,7 @@ export default function CharacterTable({ data: characters, currentPage }: Charac
             {search ? "No characters found matching your search." : "No characters available."}
           </div>
         ) : (
-          <table className="w-full bg-white dark:bg-rm-morty-blue/20">
+          <table className="w-full bg-rm-rick-blue/10 dark:bg-rm-morty-blue/20">
             <thead>
               <tr className="bg-rm-morty-blue dark:bg-rm-morty-blue/80 border-b border-rm-meeseeks-blue/30">
                 <th className="px-6 py-3 text-left text-sm font-semibold text-rm-rick-green">Avatar</th>
@@ -55,20 +55,20 @@ export default function CharacterTable({ data: characters, currentPage }: Charac
                 <tr
                   key={character.id}
                   className={`border-b border-rm-meeseeks-blue/10 hover:bg-rm-rick-green/10 transition-colors ${index % 2 === 0
-                      ? "bg-white dark:bg-rm-morty-blue/10"
-                      : "bg-rm-rick-blue/10 dark:bg-rm-morty-blue/20"
+                    ? "bg-rm-rick-blue/10 dark:bg-rm-morty-blue/10"
+                    : "bg-rm-rick-blue/20 dark:bg-rm-morty-blue/20"
                     }`}
                 >
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-4 flex justify-center">
                     <Image
                       src={character.image}
                       alt={character.name}
-                      width={48}
-                      height={48}
+                      width={64}
+                      height={64}
                       className="rounded-full ring-2 ring-rm-rick-green/50"
                     />
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-4 ">
                     <Link
                       href={`/character/${character.id}`}
                       className="text-rm-meeseeks-blue hover:text-rm-rick-green font-medium hover:underline transition-colors"
@@ -76,8 +76,8 @@ export default function CharacterTable({ data: characters, currentPage }: Charac
                       {character.name}
                     </Link>
                   </td>
-                  <td className="px-6 py-4 text-rm-morty-blue dark:text-rm-rick-blue/80">{character.species}</td>
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-4 text-rm-morty-blue dark:text-rm-rick-blue/80 text-center">{character.species}</td>
+                  <td className="px-6 py-4 text-center">
                     <StatusBadge status={character.status} />
                   </td>
                 </tr>
