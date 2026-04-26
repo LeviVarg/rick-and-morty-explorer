@@ -1,5 +1,10 @@
 const BASE_URL = "https://rickandmortyapi.com/api" as const
 
+/**
+ * Pagination metadata returned by the character list endpoint.
+ *
+ * @see https://rickandmortyapi.com/documentation/#info-and-pagination
+ */
 export interface CharacterListInfo {
   count: number
   pages: number
@@ -7,6 +12,11 @@ export interface CharacterListInfo {
   prev: string | null
 }
 
+/**
+ * A Rick and Morty character returned by the REST API.
+ *
+ * @see https://rickandmortyapi.com/documentation/#character-schema
+ */
 export interface Character {
   id: number
   name: string
@@ -22,6 +32,14 @@ export interface Character {
   created: string
 }
 
+/**
+ * Fetches a paginated list of characters from the Rick and Morty API.
+ *
+ * @param page - The 1-based page number to request. Defaults to `1`.
+ * @returns A promise that resolves to the pagination metadata and character results.
+ * @throws {Error} Thrown when the API request does not return a successful response.
+ * @see https://rickandmortyapi.com/documentation/#get-all-characters
+ */
 export async function getAllCharacters(page: number = 1) {
   const res = await fetch(`${BASE_URL}/character?page=${page}`)
 
@@ -32,6 +50,14 @@ export async function getAllCharacters(page: number = 1) {
   return res.json() as Promise<{ info: CharacterListInfo; results: Character[] }>
 }
 
+/**
+ * Fetches a single character by its numeric identifier.
+ *
+ * @param id - The character ID.
+ * @returns A promise that resolves to the requested character.
+ * @throws {Error} Thrown when the API request does not return a successful response.
+ * @see https://rickandmortyapi.com/documentation/#get-a-single-character
+ */
 export async function getCharacter(id: number) {
   const res = await fetch(`${BASE_URL}/character/${id}`)
 
@@ -41,4 +67,3 @@ export async function getCharacter(id: number) {
 
   return res.json() as Promise<Character>
 }
-
