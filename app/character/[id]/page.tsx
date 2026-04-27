@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import { ArrowLeft } from "lucide-react"
 import { getCharacter } from "../../lib/api"
 import StatusBadge from "../../components/StatusBadge"
 
@@ -13,7 +14,8 @@ export default async function CharacterProfile({ params }: { params: Promise<{ i
         href="/"
         className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-lg font-medium bg-rm-morty-blue/10 dark:bg-rm-meeseeks-blue/20 text-rm-morty-blue dark:text-rm-rick-blue hover:bg-rm-rick-green/20 hover:text-rm-jerry-green dark:hover:text-rm-rick-green transition-colors"
       >
-        &larr; Back to characters
+        <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+        <span>Back to characters</span>
       </Link>
 
       <div className="bg-rm-rick-blue/15 dark:bg-rm-morty-blue/20 rounded-xl shadow-md overflow-hidden border border-rm-meeseeks-blue/20 sm:flex">
